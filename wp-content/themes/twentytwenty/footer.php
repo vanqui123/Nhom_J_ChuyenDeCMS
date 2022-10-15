@@ -13,6 +13,8 @@
 $has_sidebar_1 = is_active_sidebar( 'sidebar-1' );
 $has_sidebar_2 = is_active_sidebar( 'sidebar-2' );
 $has_sidebar_3 = is_active_sidebar( 'sidebar-3' );
+$has_sidebar_4 = is_active_sidebar( 'sidebar-4' );
+
 ?>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -26,7 +28,7 @@ $has_sidebar_3 = is_active_sidebar( 'sidebar-3' );
 <section id="footer">
 		<div class="container">
 			<div class="row text-center text-xs-center text-sm-left text-md-left">
-			<?php if ( $has_sidebar_1 || $has_sidebar_2|| $has_sidebar_2 ) { ?>
+			<?php if ( $has_sidebar_1 || $has_sidebar_2|| $has_sidebar_3|| $has_sidebar_4 ) { ?>
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<?php if ( $has_sidebar_1 ) { ?>
 <div class="footer-widgets column-one grid-item">
@@ -41,16 +43,17 @@ $has_sidebar_3 = is_active_sidebar( 'sidebar-3' );
 </div>
 <?php } ?>
 				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4">
-				<?php if ( $has_sidebar_3 ) { ?>
-
-<div class="footer-widgets column-three grid-item">
-	<?php dynamic_sidebar( 'sidebar-3' ); ?>
-</div>
+<div class="col-xs-12 col-sm-4 col-md-4">
+	<?php if ( $has_sidebar_3 ) { ?>
+	<div class="footer-widgets column-three grid-item">
+		<?php dynamic_sidebar( 'sidebar-3' ); ?>
+	</div>
 
 <?php } ?>
 					
+	
 				</div>
+			
 			</div>
 			<?php } ?>
 			<div class="row">
