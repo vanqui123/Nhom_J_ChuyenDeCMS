@@ -341,6 +341,15 @@ if ( ! function_exists( 'twenty_twenty_one_setup' ) ) {
 
 		// Remove feed icon link from legacy RSS widget.
 		add_filter( 'rss_widget_feed_link', '__return_false' );
+		add_filter("the_content", "plugin_myContentFilter");
+
+		function plugin_myContentFilter($content)
+		{
+		  // Take the existing content and return a subset of it
+		  return substr($content, 0, 300);
+		}
+		
+
 	}
 }
 add_action( 'after_setup_theme', 'twenty_twenty_one_setup' );

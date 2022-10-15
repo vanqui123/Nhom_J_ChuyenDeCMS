@@ -26,21 +26,24 @@
 	?>
 
 	<div class="post-inner <?php echo is_page_template( 'templates/template-full-width.php' ) ? '' : 'thin'; ?> ">
-
+	
 		<div class="entry-content">
-
-			<?php
+	<span> <?php
 			if ( is_search() || ! is_singular() && 'summary' === get_theme_mod( 'blog_content', 'full' ) ) {
 				the_excerpt();
 			} else {
-				the_content( __( 'Continue reading', 'twentytwenty' ) );
+				$content = get_the_content();
+				$trimmed_content = wp_trim_words( $content, 30, '<a href="'. get_permalink()) .'">';
+				echo $trimmed_content." [...] ";
+				// the_content( __( 'Continue reading', 'twentytwenty' ) );
 			}
-			?>
+			?></span>
+				
 
 		</div><!-- .entry-content -->
-
+	
 	</div><!-- .post-inner -->
-
+	
 	<div class="section-inner">
 		<?php
 		wp_link_pages(
