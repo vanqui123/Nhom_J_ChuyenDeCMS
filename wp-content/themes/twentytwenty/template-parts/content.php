@@ -12,12 +12,7 @@
  */
 
 ?>
-<div class="change-content">
-	<h3>
-<?php $post_date = get_the_date( 'D M j' ); echo $post_date;
 
- ?>
- </h3>
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 	<?php
@@ -100,4 +95,3 @@
 	?>
 
 </article><!-- .post -->
-</div>
