@@ -1,0 +1,15 @@
+			/* -------------------------------------------------------------------------- */
+			/*	8. Post: Archive		
+/* -------------------------------------------------------------------------- */
+			/* Archive Header ---------------------------- */
+			
+			.crossedbg {
+			    background: url(./bg_cr_grey.png);
+			    height: 15px;
+			}
+			
+			.wp-widget-group__inner-blocks {
+			    background: #fff;
+			    padding: 15px;
+			}
+			/*

@@ -15,9 +15,35 @@
  */
 
 get_header();
+
+$has_sidebar_2 = is_active_sidebar('sidebar-2');
+$has_sidebar_3 = is_active_sidebar('sidebar-3');
 ?>
 
 <main id="site-content">
+	<div class="col1">
+		<?php if($has_sidebar_2) {?>
+		<div class="footer-widgets-wrapper">
+			<?php if($has_sidebar_2) { ?>
+				<div class="footer-widgets column-one grid-item">
+					<?php dynamic_sidebar('sidebar-2') ?>
+				</div>
+			<?php }?>
+		</div>
+		<?php }?>
+	</div>
+
+	<div class="col2">
+		<?php if($has_sidebar_3) {?>
+		<div class="footer-widgets-wrapper">
+			<?php if($has_sidebar_3) { ?>
+				<div class="footer-widgets column-one grid-item">
+					<?php dynamic_sidebar('sidebar-3') ?>
+				</div>
+			<?php }?>
+		</div>
+		<?php }?>
+	</div>
 
 	<?php
 
