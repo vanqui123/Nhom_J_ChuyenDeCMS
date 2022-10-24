@@ -156,4 +156,6 @@ get_the_date('m',$post_id); ?>
 	}
 	?>
 </div>
-</article><!-- .post -->
+<div>
+
+</div>
