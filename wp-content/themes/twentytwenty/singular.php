@@ -10,21 +10,15 @@
  */
 
 get_header();
-$has_sidebar_1 = is_active_sidebar( 'sidebar-1' );
-$has_sidebar_3 = is_active_sidebar( 'sidebar-3' );
 ?>
 <div class="d-flex">
-<?php if ( $has_sidebar_3 ) { ?>
-	<div class="footer-widgets column-three grid-item">
-		<?php dynamic_sidebar( 'sidebar-3' ); ?>
-	</div>
-
-<?php } ?>
-<main id="site-content">
-
-	
-	
-				
+	<ul style="list-style: none">
+<?php  $categories = get_categories();
+foreach($categories as $category) {
+   echo '<li class="categories-content"><a class="categories-text" href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></li>';
+}?>
+</ul>
+<main id="site-content">		
 <?php
 
 if ( have_posts() ) {
@@ -38,13 +32,18 @@ if ( have_posts() ) {
 
 ?>
 
-</main><!-- #site-content -->	
+</main>
+<!-- #site-content -->	
 
-<?php if ( $has_sidebar_1 ) { ?>
-<div class="footer-widgets column-one grid-item">
-<?php dynamic_sidebar( 'sidebar-1' ); ?>
-</div>	
-<?php } ?>
+<ul style="list-style: none">
+<?php
+    $args = array( 'numberposts' => '5' );
+    $recent_posts = wp_get_recent_posts( $args );
+    foreach( $recent_posts as $recent ){
+        echo '<li class="recent-post-content"><a class="categories-text" href="' . get_permalink($recent["ID"]) . '" title="Look '.esc_attr($recent["post_title"]).'" >' .   $recent["post_title"].'</a> </li> ';
+    }
+?>
+</ul>
 
 </div>
 
