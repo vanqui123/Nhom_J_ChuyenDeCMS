@@ -135,12 +135,28 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 		'post_status' => 'publish' // limit to published comments.
 	));
 
+	
 	if ($recent_comments) {
+		?>
+		<div class="archives_group">
+				<h2>Comment</h2>
+				<div class="crossedbg"></div>
+				<ul>
+		<?php
 		foreach ((array) $recent_comments as $comment) {
 
 			// sample output - do something useful here
-			echo '<a href="' . esc_url(get_comment_link($comment)) . '">' . get_the_title($comment->comment_post_ID) . '</a>';
+
+			echo '
+			<li>
+			<a href="' . esc_url(get_comment_link($comment)) . '">' . get_the_title($comment->comment_post_ID) . '</a>
+			</li>
+			';
+
 		}
+		?>
+		</ul>
+		<?php
 	}
 	?>
 		</div>
