@@ -23,7 +23,6 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 
 <main id="site-content">
 	<div class="" style="height: 150px;"></div>
-
 	<!-- <div class="col1">
 		<?php if ($has_sidebar_2) { ?>
 		<div class="footer-widgets-wrapper">
@@ -129,12 +128,21 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 				?>
 			</div>
 			<div class="archives_group">
-				<h2>Archive</h2>
-				<div class="crossedbg"></div>
-				<ul>
-					<?php $archive = wp_get_archives(); ?>
-				</ul>
-			</div>
+			
+	<?php $recent_comments = get_comments(array(
+		'number'      => 5, // number of comments to retrieve.
+		'status'      => 'approve', // we only want approved comments.
+		'post_status' => 'publish' // limit to published comments.
+	));
+
+	if ($recent_comments) {
+		foreach ((array) $recent_comments as $comment) {
+
+			// sample output - do something useful here
+			echo '<a href="' . esc_url(get_comment_link($comment)) . '">' . get_the_title($comment->comment_post_ID) . '</a>';
+		}
+	}
+	?>
 		</div>
 	<?php
 	} elseif (is_search()) {

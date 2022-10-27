@@ -12,13 +12,16 @@
 get_header();
 ?>
 <div class="d-flex">
+    <div class="col-2">
 	<ul style="list-style: none">
 <?php  $categories = get_categories();
 foreach($categories as $category) {
    echo '<li class="categories-content"><a class="categories-text" href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></li>';
 }?>
+
 </ul>
-<main id="site-content">		
+</div>
+<main id="site-content col-8">		
 <?php
 
 if ( have_posts() ) {
@@ -34,7 +37,7 @@ if ( have_posts() ) {
 
 </main>
 <!-- #site-content -->	
-
+<div class="col-2">
 <ul style="list-style: none">
 <?php
     $args = array( 'numberposts' => '5' );
@@ -44,7 +47,7 @@ if ( have_posts() ) {
     }
 ?>
 </ul>
-
+</div>
 </div>
 
 

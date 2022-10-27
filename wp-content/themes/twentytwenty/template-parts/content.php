@@ -17,8 +17,6 @@
 <article <?php post_class('pb-4'); ?> id="post-<?php the_ID(); ?>">
 
 
-
-
 	<div class="main-content">
 		<div >
 			<div class="d-flex" style="width: 249px;">
@@ -139,29 +137,7 @@
 
 			</div><!-- .section-inner -->
 		</div>
-		<?php
 
-		if (is_single()) {
-
-			get_template_part('template-parts/navigation');
-		}
-
-		/*
-	 * Output comments wrapper if it's a post, or if comments are open,
-	 * or if there's a comment number – and check for password.
-	 */
-		if ((is_single() || is_page()) && (comments_open() || get_comments_number()) && !post_password_required()) {
-		?>
-
-			<div class="comments-wrapper section-inner">
-
-				<?php comments_template(); ?>
-
-			</div><!-- .comments-wrapper -->
-
-		<?php
-		}
-		?>
 	</div>
 	<div>
 
