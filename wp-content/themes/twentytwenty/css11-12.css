@@ -1,55 +1,56 @@
-			/* -------------------------------------------------------------------------- */
-			/*	8. Post: Archive		
 /* -------------------------------------------------------------------------- */
-			/* Archive Header ---------------------------- */
-			
-			.crossedbg {
-			    background: url(./bg_cr_grey.png);
-			    height: 15px;
-			    margin: 0 0 0 3rem;
-			}
-			
-			.wp-widget-group__inner-blocks {
-			    background: #fff;
-			    padding: 15px;
-			}
-			/* test push branch  */
-			
-			.archives_group {
-			    width: 30%;
-			    float: left;
-			}
-			
-			.archives_group ul {
-			    list-style: none;
-			}
-			
-			.archives_group li {
-			    font-size: 25px;
-			}
-			
-			.archives_group li::before {
-			    font-family: Arial, Helvetica, sans-serif;
-			    color: #f5ce31;
-			    content: "\2022";
-			    font-size: 2em;
-			    padding-right: 0.5em;
-			    position: relative;
-			    top: 0.15em;
-			}
-			
-			.archives_group li {
-			    text-decoration: none;
-			    border-bottom: 1px solid #8080806b;
-			    line-height: 1.5;
-			    margin: 0.5rem 2rem 0 2rem;
-			}
-			
-			.archives_group li a {
-			    font-size: 18px;
-			}
-			
-			.archives_group h2 {
-			    margin: 0 0 0 3rem;
-			    font-size: 31px;
-			}
+/*	8. Post: Archive		
+/* -------------------------------------------------------------------------- */
+/* Archive Header ---------------------------- */
+
+.crossedbg {
+  background: url(./bg_cr_grey.png);
+  height: 15px;
+  margin: 0 0 0 3rem;
+}
+
+.wp-widget-group__inner-blocks {
+  background: #fff;
+  padding: 15px;
+}
+/* test push branch  */
+
+.archives_group {
+  float: left;
+	width: 100%;
+	max-width: 300px;
+}
+
+.archives_group ul {
+  list-style: none;
+}
+
+.archives_group li {
+  font-size: 25px;
+}
+
+.archives_group li::before {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f5ce31;
+  content: "\2022";
+  font-size: 2em;
+  padding-right: 0.5em;
+  position: relative;
+  top: 0.15em;
+}
+
+.archives_group li {
+  text-decoration: none;
+  border-bottom: 1px solid #8080806b;
+  line-height: 1.5;
+  margin: 0.5rem 2rem 0 2rem;
+}
+
+.archives_group li a {
+  font-size: 18px;
+}
+
+.archives_group h2 {
+  margin: 0 0 0 3rem;
+  font-size: 31px;
+}
