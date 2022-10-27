@@ -12,8 +12,17 @@
  */
 
 ?>
-
+<div class="archives_group">
+<h2>Archive</h2>
+<div class="crossedbg"></div>
+<ul>
+<?php $archive = wp_get_archives(); ?></div>
+</ul>
 <article  <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+
+
+
+
 <div class="main-content" >
 	<div class="main-content-date col-md-4 col-xs-3">
 <h2 class="content-date-day" ><?php echo 
@@ -159,3 +168,20 @@ get_the_date('m',$post_id); ?>
 <div>
 
 </div>
+
+	<?php $recent_comments = get_comments( array( 
+		'number'      => 5, // number of comments to retrieve.
+		'status'      => 'approve', // we only want approved comments.
+		'post_status' => 'publish' // limit to published comments.
+	) );
+
+	if ( $recent_comments ) {
+		foreach ( (array) $recent_comments as $comment ) {
+
+			// sample output - do something useful here
+			echo '<a href="' . esc_url( get_comment_link( $comment ) ) . '">' . get_the_title( $comment->comment_post_ID ) . '</a>';
+
+		}
+	} 
+	?>
+</article>
