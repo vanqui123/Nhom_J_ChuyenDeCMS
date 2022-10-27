@@ -19,9 +19,14 @@ get_header();
 $has_sidebar_2 = is_active_sidebar('sidebar-2');
 $has_sidebar_3 = is_active_sidebar('sidebar-3');
 ?>
-
+<div class="archives_group">
+<h2>Archive</h2>
+<div class="crossedbg"></div>
+<ul>
+<?php $archive = wp_get_archives(); ?></div>
+</ul>
 <main id="site-content">
-	<div class="col1">
+	<!-- <div class="col1">
 		<?php if($has_sidebar_2) {?>
 		<div class="footer-widgets-wrapper">
 			<?php if($has_sidebar_2) { ?>
@@ -43,7 +48,7 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 			<?php }?>
 		</div>
 		<?php }?>
-	</div>
+	</div> -->
 
 	<?php
 
