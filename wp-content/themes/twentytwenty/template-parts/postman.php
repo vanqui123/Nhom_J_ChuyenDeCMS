@@ -1,6 +1,11 @@
 <?php
+
 /**
- * Displays the content when the cover template is used.
+ * The default template for displaying content
+ *
+ * Used for both singular and index.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package WordPress
  * @subpackage Twenty_Twenty
@@ -9,174 +14,335 @@
 
 ?>
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-	<?php
-	// On the cover page template, output the cover header.
-	$cover_header_style   = '';
-	$cover_header_classes = '';
+<article <?php post_class('pb-4'); ?> id="post-<?php the_ID(); ?>">
 
-	$color_overlay_style   = '';
-	$color_overlay_classes = '';
 
-	$image_url = ! post_password_required() ? get_the_post_thumbnail_url( get_the_ID(), 'twentytwenty-fullscreen' ) : '';
 
-	if ( $image_url ) {
-		$cover_header_style   = ' style="background-image: url( ' . esc_url( $image_url ) . ' );"';
-		$cover_header_classes = ' bg-image';
-	}
 
-	// Get the color used for the color overlay.
-	$color_overlay_color = get_theme_mod( 'cover_template_overlay_background_color' );
-	if ( $color_overlay_color ) {
-		$color_overlay_style = ' style="color: ' . esc_attr( $color_overlay_color ) . ';"';
-	} else {
-		$color_overlay_style = '';
-	}
+	<div class="main-content">
+		<div >
+			<div class="d-flex" style="width: 249px;">
+				<img src="https://product.hstatic.net/200000056344/product/clay_7d68fe621f7a410bb13aa4f48a0a21ca_large_014da905eb344ee18d2e18f551b94512_master.png" width="180" class="img-fluid" alt="">
+				<div class="" style="flex-shrink: 0;">
+					<h2 class="content-date-day"><?php echo get_the_date('d', $post_id); ?>
+					</h2>
+					<p class="content-month">
+						THÁNG
+						<?php echo
+						get_the_date('m', $post_id); ?>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="border-left pl-3 border-dark">
+			<header class="<?php echo esc_attr($entry_header_classes); ?>">
+				<div class="entry-header-inner section-inner medium">
+					<?php
+					/**
+					 * Allow child themes and plugins to filter the display of the categories in the entry header.
+					 *
+					 * @since Twenty Twenty 1.0
+					 *
+					 * @param bool Whether to show the categories in header. Default true.
+					 */
+					$show_categories = apply_filters('twentytwenty_show_categories_in_entry_header', true);
 
-	// Get the fixed background attachment option.
-	if ( get_theme_mod( 'cover_template_fixed_background', true ) ) {
-		$cover_header_classes .= ' bg-attachment-fixed';
-	}
+					if (true === $show_categories && has_category()) {
+					?>
 
-	// Get the opacity of the color overlay.
-	$color_overlay_opacity  = get_theme_mod( 'cover_template_overlay_opacity' );
-	$color_overlay_opacity  = ( false === $color_overlay_opacity ) ? 80 : $color_overlay_opacity;
-	$color_overlay_classes .= ' opacity-' . $color_overlay_opacity;
-	?>
+						<!-- <div class="entry-categories">
+				<span class="screen-reader-text"><?php //_e( 'Categories', 'twentytwenty' ); 
+													?></span>
+				<div class="entry-categories-inner">
+					<?php //the_category( ' ' ); 
+					?>
+				</div>
+			</div> -->
 
-	<div class="cover-header <?php echo $cover_header_classes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>"<?php echo $cover_header_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>>
-		<div class="cover-header-inner-wrapper screen-height">
-			<div class="cover-header-inner">
-				<div class="cover-color-overlay color-accent<?php echo esc_attr( $color_overlay_classes ); ?>"<?php echo $color_overlay_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to double check this, but for now, we want to pass PHPCS ;) ?>></div>
+					<?php
+					}
 
-					<header class="entry-header has-text-align-center">
-						<div class="entry-header-inner section-inner medium">
+					if (is_singular()) {
+						the_title('<h1 class="entry-title">', '</h1>');
+					} else {
+						the_title('<h2 class="entry-title heading-size-1"><a class="content-title" style="color: #428bca;" href="' . esc_url(get_permalink()) . '">', '</a></h2>');
+					}
 
-							<?php
+					$intro_text_width = '';
 
-							/**
-							 * Allow child themes and plugins to filter the display of the categories in the article header.
-							 *
-							 * @since Twenty Twenty 1.0
-							 *
-							 * @param bool Whether to show the categories in article header. Default true.
-							 */
-							$show_categories = apply_filters( 'twentytwenty_show_categories_in_entry_header', true );
+					if (is_singular()) {
+						$intro_text_width = ' small';
+					} else {
+						$intro_text_width = ' thin';
+					}
 
-							if ( true === $show_categories && has_category() ) {
-								?>
+					if (has_excerpt() && is_singular()) {
+					?>
 
-								<div class="entry-categories">
-									<span class="screen-reader-text"><?php _e( 'Categories', 'twentytwenty' ); ?></span>
-									<div class="entry-categories-inner">
-										<?php the_category( ' ' ); ?>
-									</div><!-- .entry-categories-inner -->
-								</div><!-- .entry-categories -->
+						<div class="intro-text section-inner max-percentage<?php echo $intro_text_width; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output 
+																			?>">
+							<?php the_excerpt(); ?>
+						</div>
 
-								<?php
-							}
+					<?php
+					}
 
-							the_title( '<h1 class="entry-title">', '</h1>' );
+					// Default to displaying the post meta.
+					twentytwenty_the_post_meta(get_the_ID(), 'single-top');
+					?>
 
-							if ( is_page() ) {
-								?>
+				</div><!-- .entry-header-inner -->
 
-								<div class="to-the-content-wrapper">
+			</header><!-- .entry-header -->
 
-									<a href="#post-inner" class="to-the-content fill-children-current-color">
-										<?php twentytwenty_the_theme_svg( 'arrow-down' ); ?>
-										<div class="screen-reader-text"><?php _e( 'Scroll Down', 'twentytwenty' ); ?></div>
-									</a><!-- .to-the-content -->
 
-								</div><!-- .to-the-content-wrapper -->
+			<div class="post-inner <?php echo is_page_template('templates/template-full-width.php') ? '' : 'thin'; ?> ">
 
-								<?php
+				<div class="entry-content">
+					<span> <?php
+							if (is_search() || !is_singular() && 'summary' === get_theme_mod('blog_content', 'full')) {
+								the_excerpt();
 							} else {
-
-								$intro_text_width = '';
-
-								if ( is_singular() ) {
-									$intro_text_width = ' small';
-								} else {
-									$intro_text_width = ' thin';
-								}
-
-								if ( has_excerpt() ) {
-									?>
-
-									<div class="intro-text section-inner max-percentage<?php echo esc_attr( $intro_text_width ); ?>">
-										<?php the_excerpt(); ?>
-									</div>
-
-									<?php
-								}
-
-								twentytwenty_the_post_meta( get_the_ID(), 'single-top' );
-
+								$content = get_the_content();
+								$trimmed_content = wp_trim_words($content, 30, '<a href="' . get_permalink()) . '">';
+								echo $trimmed_content . " [...] ";
+								// the_content( __( 'Continue reading', 'twentytwenty' ) );
 							}
-							?>
+							?></span>
 
-						</div><!-- .entry-header-inner -->
-					</header><!-- .entry-header -->
 
-			</div><!-- .cover-header-inner -->
-		</div><!-- .cover-header-inner-wrapper -->
-	</div><!-- .cover-header -->
+				</div><!-- .entry-content -->
 
-	<div class="post-inner" id="post-inner">
+			</div><!-- .post-inner -->
 
-		<div class="entry-content">
+			<div class="section-inner">
+				<?php
+				wp_link_pages(
+					array(
+						'before'      => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__('Page', 'twentytwenty') . '"><span class="label">' . __('Pages:', 'twentytwenty') . '</span>',
+						'after'       => '</nav>',
+						'link_before' => '<span class="page-number">',
+						'link_after'  => '</span>',
+					)
+				);
 
+				edit_post_link();
+
+				// Single bottom post meta.
+				twentytwenty_the_post_meta(get_the_ID(), 'single-bottom');
+
+				if (post_type_supports(get_post_type(get_the_ID()), 'author') && is_single()) {
+
+					get_template_part('template-parts/entry-author-bio');
+				}
+				?>
+
+			</div><!-- .section-inner -->
+		</div>
 		<?php
-		the_content();
-		?>
 
-		</div><!-- .entry-content -->
-		<?php
-		wp_link_pages(
-			array(
-				'before'      => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'twentytwenty' ) . '"><span class="label">' . __( 'Pages:', 'twentytwenty' ) . '</span>',
-				'after'       => '</nav>',
-				'link_before' => '<span class="page-number">',
-				'link_after'  => '</span>',
-			)
-		);
+		if (is_single()) {
 
-		edit_post_link();
-		// Single bottom post meta.
-		twentytwenty_the_post_meta( get_the_ID(), 'single-bottom' );
-
-		if ( post_type_supports( get_post_type( get_the_ID() ), 'author' ) && is_single() ) {
-
-			get_template_part( 'template-parts/entry-author-bio' );
-
+			get_template_part('template-parts/navigation');
 		}
-		?>
 
-	</div><!-- .post-inner -->
-
-	<?php
-
-	if ( is_single() ) {
-
-		get_template_part( 'template-parts/navigation' );
-	}
-
-	/*
+		/*
 	 * Output comments wrapper if it's a post, or if comments are open,
 	 * or if there's a comment number – and check for password.
 	 */
-	if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
+		if ((is_single() || is_page()) && (comments_open() || get_comments_number()) && !post_password_required()) {
 		?>
 
-		<div class="comments-wrapper section-inner">
+			<div class="comments-wrapper section-inner">
 
-			<?php comments_template(); ?>
+				<?php comments_template(); ?>
 
-		</div><!-- .comments-wrapper -->
+			</div><!-- .comments-wrapper -->
 
 		<?php
+		}
+		?>
+	</div>
+	<div>
+
+	</div>
+
+	<?php $recent_comments = get_comments(array(
+		'number'      => 5, // number of comments to retrieve.
+		'status'      => 'approve', // we only want approved comments.
+		'post_status' => 'publish' // limit to published comments.
+	));
+
+	if ($recent_comments) {
+		foreach ((array) $recent_comments as $comment) {
+
+			// sample output - do something useful here
+			echo '<a href="' . esc_url(get_comment_link($comment)) . '">' . get_the_title($comment->comment_post_ID) . '</a>';
+		}
 	}
 	?>
+</article>
+<article <?php post_class('pb-4'); ?> id="post-<?php the_ID(); ?>">
+	<div class="main-content">
+		<div >
+			<div class="d-flex" style="width: 249px;">
+				<img src="https://product.hstatic.net/200000056344/product/clay_7d68fe621f7a410bb13aa4f48a0a21ca_large_014da905eb344ee18d2e18f551b94512_master.png" width="180" class="img-fluid" alt="">
+				<div class="" style="flex-shrink: 0;">
+					<h2 class="content-date-day"><?php echo get_the_date('d', $post_id); ?>
+					</h2>
+					<p class="content-month">
+						THÁNG
+						<?php echo
+						get_the_date('m', $post_id); ?>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="border-left pl-3 border-dark">
+			<header class="<?php echo esc_attr($entry_header_classes); ?>">
+				<div class="entry-header-inner section-inner medium">
+					<?php
+					/**
+					 * Allow child themes and plugins to filter the display of the categories in the entry header.
+					 *
+					 * @since Twenty Twenty 1.0
+					 *
+					 * @param bool Whether to show the categories in header. Default true.
+					 */
+					$show_categories = apply_filters('twentytwenty_show_categories_in_entry_header', true);
 
-</article><!-- .post -->
+					if (true === $show_categories && has_category()) {
+					?>
+
+						<!-- <div class="entry-categories">
+				<span class="screen-reader-text"><?php //_e( 'Categories', 'twentytwenty' ); 
+													?></span>
+				<div class="entry-categories-inner">
+					<?php //the_category( ' ' ); 
+					?>
+				</div>
+			</div> -->
+
+					<?php
+					}
+
+					if (is_singular()) {
+						the_title('<h1 class="entry-title">', '</h1>');
+					} else {
+						the_title('<h2 class="entry-title heading-size-1"><a class="content-title" style="color: #428bca;" href="' . esc_url(get_permalink()) . '">', '</a></h2>');
+					}
+
+					$intro_text_width = '';
+
+					if (is_singular()) {
+						$intro_text_width = ' small';
+					} else {
+						$intro_text_width = ' thin';
+					}
+
+					if (has_excerpt() && is_singular()) {
+					?>
+
+						<div class="intro-text section-inner max-percentage<?php echo $intro_text_width; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output 
+																			?>">
+							<?php the_excerpt(); ?>
+						</div>
+
+					<?php
+					}
+
+					// Default to displaying the post meta.
+					twentytwenty_the_post_meta(get_the_ID(), 'single-top');
+					?>
+
+				</div><!-- .entry-header-inner -->
+
+			</header><!-- .entry-header -->
+
+
+			<div class="post-inner <?php echo is_page_template('templates/template-full-width.php') ? '' : 'thin'; ?> ">
+
+				<div class="entry-content">
+					<span> <?php
+							if (is_search() || !is_singular() && 'summary' === get_theme_mod('blog_content', 'full')) {
+								the_excerpt();
+							} else {
+								$content = get_the_content();
+								$trimmed_content = wp_trim_words($content, 30, '<a href="' . get_permalink()) . '">';
+								echo $trimmed_content . " [...] ";
+								// the_content( __( 'Continue reading', 'twentytwenty' ) );
+							}
+							?></span>
+
+
+				</div><!-- .entry-content -->
+
+			</div><!-- .post-inner -->
+
+			<div class="section-inner">
+				<?php
+				wp_link_pages(
+					array(
+						'before'      => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__('Page', 'twentytwenty') . '"><span class="label">' . __('Pages:', 'twentytwenty') . '</span>',
+						'after'       => '</nav>',
+						'link_before' => '<span class="page-number">',
+						'link_after'  => '</span>',
+					)
+				);
+
+				edit_post_link();
+
+				// Single bottom post meta.
+				twentytwenty_the_post_meta(get_the_ID(), 'single-bottom');
+
+				if (post_type_supports(get_post_type(get_the_ID()), 'author') && is_single()) {
+
+					get_template_part('template-parts/entry-author-bio');
+				}
+				?>
+
+			</div><!-- .section-inner -->
+		</div>
+		<?php
+
+		if (is_single()) {
+
+			get_template_part('template-parts/navigation');
+		}
+
+		/*
+	 * Output comments wrapper if it's a post, or if comments are open,
+	 * or if there's a comment number – and check for password.
+	 */
+		if ((is_single() || is_page()) && (comments_open() || get_comments_number()) && !post_password_required()) {
+		?>
+
+			<div class="comments-wrapper section-inner">
+
+				<?php comments_template(); ?>
+
+			</div><!-- .comments-wrapper -->
+
+		<?php
+		}
+		?>
+	</div>
+	<div>
+
+	</div>
+
+	<?php $recent_comments = get_comments(array(
+		'number'      => 5, // number of comments to retrieve.
+		'status'      => 'approve', // we only want approved comments.
+		'post_status' => 'publish' // limit to published comments.
+	));
+
+	if ($recent_comments) {
+		foreach ((array) $recent_comments as $comment) {
+
+			// sample output - do something useful here
+			echo '<a href="' . esc_url(get_comment_link($comment)) . '">' . get_the_title($comment->comment_post_ID) . '</a>';
+		}
+	}
+	?>
+</article>
