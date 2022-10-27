@@ -2598,7 +2598,7 @@ h2.entry-title {
 }
 
 .post-inner {
-	padding-top: 5rem;
+	
 }
 
 .reduced-spacing.missing-post-thumbnail .post-inner {
@@ -5148,9 +5148,6 @@ a.to-the-top > * {
 		margin-top: 6rem;
 	}
 
-	.post-inner {
-		padding-top: 8rem;
-	}
 
 	/* POST FOOTER */
 
