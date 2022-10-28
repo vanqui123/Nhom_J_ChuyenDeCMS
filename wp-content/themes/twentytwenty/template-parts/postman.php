@@ -21,8 +21,8 @@
 
 	<div class="main-content">
 		<div >
-			<div class="d-flex" style="width: 249px;">
-				<img src="https://product.hstatic.net/200000056344/product/clay_7d68fe621f7a410bb13aa4f48a0a21ca_large_014da905eb344ee18d2e18f551b94512_master.png" width="180" class="img-fluid" alt="">
+			<div class="d-flex" style="width: 249px;justify-content:end;margin-right:10px">
+				<!-- <img src="https://product.hstatic.net/200000056344/product/clay_7d68fe621f7a410bb13aa4f48a0a21ca_large_014da905eb344ee18d2e18f551b94512_master.png" width="180" class="img-fluid" alt=""> -->
 				<div class="" style="flex-shrink: 0;">
 					<h2 class="content-date-day"><?php echo get_the_date('d', $post_id); ?>
 					</h2>
@@ -103,10 +103,9 @@
 							if (is_search() || !is_singular() && 'summary' === get_theme_mod('blog_content', 'full')) {
 								the_excerpt();
 							} else {
-								$content = get_the_content();
-								$trimmed_content = wp_trim_words($content, 30, '<a href="' . get_permalink()) . '">';
-								echo $trimmed_content . " [...] ";
-								// the_content( __( 'Continue reading', 'twentytwenty' ) );
+								$excerpt = wp_trim_words( get_the_content(), 30, '<a href="'.get_the_permalink().'">[...]</a>');
+								echo $excerpt;
+								// the_content( __( 'Continue reading', 'twentytwenty' ) );s
 							}
 							?></span>
 

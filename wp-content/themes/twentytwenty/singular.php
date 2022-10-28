@@ -12,8 +12,10 @@
 get_header();
 ?>
 <div class="d-flex">
-    <div class="col-2">
+    <div class="col-2" style="margin-top:100px">
 	<ul style="list-style: none">
+    <h2>Categories</h2>
+    <div class="crossedbg"></div>
 <?php  $categories = get_categories();
 foreach($categories as $category) {
    echo '<li class="categories-content"><a class="categories-text" href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></li>';
@@ -37,11 +39,14 @@ if ( have_posts() ) {
 
 </main>
 <!-- #site-content -->	
-<div class="col-2">
-<ul style="list-style: none">
+<div class="col-2" style="margin-top:100px">
+<h2>Recent Post</h2>
+    <div class="crossedbg"></div>
+<ul style="list-style: none" class="recent_post">
+
 <?php
-    $args = array( 'numberposts' => '5' );
-    $recent_posts = wp_get_recent_posts( $args );
+    // $args = array( 'numberposts' => '5' );
+    $recent_posts = wp_get_recent_posts();
     foreach( $recent_posts as $recent ){
         echo '<li class="recent-post-content"><a class="categories-text" href="' . get_permalink($recent["ID"]) . '" title="Look '.esc_attr($recent["post_title"]).'" >' .   $recent["post_title"].'</a> </li> ';
     }
