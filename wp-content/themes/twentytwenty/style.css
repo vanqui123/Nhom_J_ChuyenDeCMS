@@ -6192,7 +6192,7 @@ a.to-the-top > * {
 
 	/* Template: Cover Template -------------- */
 
-	.cover-header + .post-inner {
+	.cover-header {
 		padding-top: 10rem;
 	}
 
