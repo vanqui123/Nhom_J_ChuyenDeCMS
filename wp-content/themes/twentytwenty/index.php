@@ -164,7 +164,7 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 	} elseif (is_search()) {
 	?>
 
-		<div class="no-search-results-form section-inner thin">
+		<div class="d-flex w-100 justify-content-center align-items-center" style="background-color: #f5efe0; height: 200px;">
 
 			<?php
 			get_search_form(
