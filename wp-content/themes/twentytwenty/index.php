@@ -22,7 +22,7 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 ?>
 
 <main id="site-content">
-	<div class="" style="height: 150px;"></div>
+	
 	<!-- <div class="col1">
 		<?php if ($has_sidebar_2) { ?>
 		<div class="footer-widgets-wrapper">
@@ -200,7 +200,7 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 
 							?>
 							<?php get_template_part('template-parts/pagination'); ?>
-							<div class="" style="height: 150px;"></div>
+							
 </main><!-- #site-content -->
 
 <?php get_template_part('template-parts/footer-menus-widgets'); ?>
