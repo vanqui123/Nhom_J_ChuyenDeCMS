@@ -1,8 +1,6 @@
 .previous-post {
     color: #000;
 }
-
-
 .pagination-single-inner {
     display: flex;
     flex-direction: column !important;
@@ -12,11 +10,9 @@
     font-weight: 300;
     margin-left: 10%;
 }
-
 .pagination-single-inner {
     flex-direction: column;
 }
-
 .arrow {
     font-size: 0.7em;
     font-weight: 500;
@@ -26,7 +22,6 @@
     vertical-align: middle;
     margin: 5px 2rem 0 0
 }
-
 .arrow .arrow-headlinesdm {
     float: left;
     font-family: 'Prata', serif;

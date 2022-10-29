@@ -6597,6 +6597,11 @@ section .section-title {
 	width: 100%;
 	max-width: 550px !important;
 }
+
+.img-ctn{
+    width: 250px;
+    height: 250px;
+
 .detail-name{
 	@media (min-width: 992px)
 	.col-md-2 {
