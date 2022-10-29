@@ -6597,3 +6597,7 @@ section .section-title {
 	width: 100%;
 	max-width: 550px !important;
 }
+
+.thumbnail-post{
+	width: 250px;
+}

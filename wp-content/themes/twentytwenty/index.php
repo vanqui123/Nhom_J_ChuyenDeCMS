@@ -104,7 +104,7 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 	<?php
 	}
 
-	if (have_posts()) {
+	if (have_posts()  && have_posts()) {
 		$i = 0;
 	?>
 		<div class="d-flex">
@@ -123,63 +123,122 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 						echo '<hr class="post-separator styled-separator is-style-wide section-inner" aria-hidden="true" />';
 					}
 					the_post();
-					get_template_part('template-parts/postman', get_post_type());
+					get_template_part('template-parts/postman_search', get_post_type());
 				}
 				?>
 			</div>
 			<div class="archives_group">
-			
-	<?php $recent_comments = get_comments(array(
-		'number'      => 5, // number of comments to retrieve.
-		'status'      => 'approve', // we only want approved comments.
-		'post_status' => 'publish' // limit to published comments.
-	));
 
-	
-	if ($recent_comments) {
-		?>
-		<div class="archives_group">
-				<h2>Comment</h2>
-				<div class="crossedbg"></div>
-				<ul>
-		<?php
-		foreach ((array) $recent_comments as $comment) {
+				<?php $recent_comments = get_comments(array(
+					'number'      => 5, // number of comments to retrieve.
+					'status'      => 'approve', // we only want approved comments.
+					'post_status' => 'publish' // limit to published comments.
+				));
 
-			// sample output - do something useful here
 
-			echo '
+				if ($recent_comments) {
+				?>
+					<div class="archives_group">
+						<h2>Comment</h2>
+						<div class="crossedbg"></div>
+						<ul>
+							<?php
+							foreach ((array) $recent_comments as $comment) {
+
+								// sample output - do something useful here
+
+								echo '
 			<li>
 			<a href="' . esc_url(get_comment_link($comment)) . '">' . get_the_title($comment->comment_post_ID) . '</a>
 			</li>
 			';
+							}
+							?>
+						</ul>
+					<?php
+				}
+					?>
+					</div>
+				<?php
+			} 
+				elseif (have_posts()) {
+				$i = 0;
+				?>
 
-		}
-		?>
-		</ul>
-		<?php
-	}
-	?>
-		</div>
-	<?php
-	} elseif (is_search()) {
-	?>
+					<div class="d-flex">
+						<div class="archives_group">
+							<h2>Archive</h2>
+							<div class="crossedbg"></div>
+							<ul>
+								<?php $archive = wp_get_archives(); ?>
+							</ul>
+						</div>
+						<div class="">
+							<?php
+							while (have_posts()) {
+								$i++;
+								if ($i > 1) {
+									echo '<hr class="post-separator styled-separator is-style-wide section-inner" aria-hidden="true" />';
+								}
+								the_post();
+								get_template_part('template-parts/postman', get_post_type());
+							}
+							?>
+						</div>
+						<div class="archives_group">
 
-		<div class="d-flex w-100 justify-content-center align-items-center" style="background-color: #f5efe0; height: 200px;">
+							<?php $recent_comments = get_comments(array(
+								'number'      => 5, // number of comments to retrieve.
+								'status'      => 'approve', // we only want approved comments.
+								'post_status' => 'publish' // limit to published comments.
+							));
 
-			<?php
-			get_search_form(
-				array(
-					'aria_label' => __('search again', 'twentytwenty'),
-				)
-			);
-			?>
-		</div><!-- .no-search-results -->
 
-	<?php
-	}
-	?>
-	<?php get_template_part('template-parts/pagination'); ?>
-	<div class="" style="height: 150px;"></div>
+							if ($recent_comments) {
+							?>
+								<div class="archives_group">
+									<h2>Comment</h2>
+									<div class="crossedbg"></div>
+									<ul>
+										<?php
+										foreach ((array) $recent_comments as $comment) {
+
+											// sample output - do something useful here
+
+											echo '
+			<li>
+			<a href="' . esc_url(get_comment_link($comment)) . '">' . get_the_title($comment->comment_post_ID) . '</a>
+			</li>
+			';
+										}
+										?>
+									</ul>
+								<?php
+							}
+								?>
+								</div>
+
+							<?php
+						} elseif (is_search()) {
+							?>
+
+								<div class="d-flex w-100 justify-content-center align-items-center" style="background-color: #f5efe0; height: 200px;">
+
+									<?php
+									get_search_form(
+										array(
+											'aria_label' => __('search again', 'twentytwenty'),
+										)
+									);
+									?>
+								</div><!-- .no-search-results -->
+
+							<?php
+						}
+
+							?>
+							<?php get_template_part('template-parts/pagination'); ?>
+							<div class="" style="height: 150px;"></div>
 </main><!-- #site-content -->
 
 <?php get_template_part('template-parts/footer-menus-widgets'); ?>
