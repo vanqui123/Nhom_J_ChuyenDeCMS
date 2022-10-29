@@ -6598,6 +6598,8 @@ section .section-title {
 	max-width: 550px !important;
 }
 
-.thumbnail-post{
-	width: 250px;
+
+.img-ctn{
+    width: 250px;
+    height: 250px;
 }

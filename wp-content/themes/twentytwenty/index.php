@@ -104,18 +104,11 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 	<?php
 	}
 
-	if (have_posts()  && have_posts()) {
+	if (is_search()  && have_posts()) {
 		$i = 0;
 	?>
-		<div class="d-flex">
-			<div class="archives_group">
-				<h2>Archive</h2>
-				<div class="crossedbg"></div>
-				<ul>
-					<?php $archive = wp_get_archives(); ?>
-				</ul>
-			</div>
-			<div class="">
+		
+			<div style="padding: 0 30px; max-width: 1222px; margin: 0 auto;">
 				<?php
 				while (have_posts()) {
 					$i++;
@@ -127,38 +120,7 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 				}
 				?>
 			</div>
-			<div class="archives_group">
-
-				<?php $recent_comments = get_comments(array(
-					'number'      => 5, // number of comments to retrieve.
-					'status'      => 'approve', // we only want approved comments.
-					'post_status' => 'publish' // limit to published comments.
-				));
-
-
-				if ($recent_comments) {
-				?>
-					<div class="archives_group">
-						<h2>Comment</h2>
-						<div class="crossedbg"></div>
-						<ul>
-							<?php
-							foreach ((array) $recent_comments as $comment) {
-
-								// sample output - do something useful here
-
-								echo '
-			<li>
-			<a href="' . esc_url(get_comment_link($comment)) . '">' . get_the_title($comment->comment_post_ID) . '</a>
-			</li>
-			';
-							}
-							?>
-						</ul>
-					<?php
-				}
-					?>
-					</div>
+		
 				<?php
 			} 
 				elseif (have_posts()) {
