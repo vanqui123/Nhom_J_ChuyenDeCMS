@@ -91,8 +91,9 @@
 					</div>
 				</div> -->
 				<nav class="navbar navbar-light bg-light">
-					<form class="form-inline">
-						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<form class="form-inline"  <?php echo $twentytwenty_aria_label; //  
+					?> method="get" action="<?php echo esc_url(home_url('/')); ?>" >
+						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"  class="search-field border-0 w-100" placeholder="<?php echo esc_attr_x('Search &hellip;', 'placeholder', 'twentytwenty'); ?>" value="<?php echo get_search_query(); ?>" name="s">
 						<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Submit</button>
 					</form>
 				</nav>

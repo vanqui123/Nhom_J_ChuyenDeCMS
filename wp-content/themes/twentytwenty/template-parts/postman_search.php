@@ -14,15 +14,21 @@
 
 ?>
 
-<article <?php post_class('pb-4'); ?> id="post-<?php the_ID(); ?>">
-
-
-
+<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 	<div class="main-content">
 		<div >
-			<div class="d-flex" style="width: 249px;justify-content:end;margin-right:10px">
-		
+			<div class="d-flex" style="justify-content:end;">
+				<?php if (get_the_post_thumbnail_url()) {?> 
+				<img src="<?=get_the_post_thumbnail_url()?>" width="250" height="250" alt=""> 
+				<?php 
+			} else{
+				?>
+				<div class="" style="width: 250px;height: 250px; flex-shrink: 0;"></div>
+				<?php
+
+			} ?>
+				
 				<div class="" style="flex-shrink: 0;">
 					<h2 class="content-date-day"><?php echo get_the_date('d', $post_id); ?>
 					</h2>
@@ -33,9 +39,9 @@
 					</p>
 				</div>
 			</div>
-		</div>
+		</div>	
 		<div class="border-left pl-3 border-dark">
-			<header class="<?php echo esc_attr($entry_header_classes); ?>">
+			<header >
 				<div class="entry-header-inner section-inner medium">
 					<?php
 					/**
