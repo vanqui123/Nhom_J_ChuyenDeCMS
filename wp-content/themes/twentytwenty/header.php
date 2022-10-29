@@ -27,6 +27,7 @@
 
 	<!-- module1 CSS -->
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/header1.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/module7.css" type="text/css" media="screen" />
 
 	<!-- Dropdown -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -81,14 +82,20 @@
 					?>
 
 				</div><!-- .header-titles -->
-				<div class="search-box-wrapper">
+				<!-- <div class="search-box-wrapper">
 					<div class="search-box">
 						<form action="" method="get" class="search-form">
 							<input type="text" class="search-field" name="s" placeholder="Search">
 							<input type="submit" class="search-submit" value="submit">
 						</form>
 					</div>
-				</div>
+				</div> -->
+				<nav class="navbar navbar-light bg-light">
+					<form class="form-inline">
+						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Submit</button>
+					</form>
+				</nav>
 				<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
 					<span class="toggle-inner">
 						<span class="toggle-icon">
@@ -191,8 +198,8 @@
 								Account
 							</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item" href="<?= wp_login_url() ?>">Login</a>
-							<a class="dropdown-item" href="<?= wp_logout_url() ?>">Logout</a>
+								<a class="dropdown-item" href="<?= wp_login_url() ?>">Login</a>
+								<a class="dropdown-item" href="<?= wp_logout_url() ?>">Logout</a>
 
 							</div>
 						</div>

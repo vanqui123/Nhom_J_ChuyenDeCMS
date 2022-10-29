@@ -2,18 +2,18 @@
 
 
 .site-title,
-#menu-item-44 a,
-#menu-item-45 a,
-#menu-item-46 a {
+#menu-item-80 a,
+#menu-item-81 a,
+#menu-item-82 a {
     color: #777 !important;
 
 }
 
 .site-title a:hover,
 .site-title a:focus,
-#menu-item-44 a:hover,
-#menu-item-45 a:hover,
-#menu-item-46 a:hover {
+#menu-item-80 a:hover,
+#menu-item-81 a:hover,
+#menu-item-82 a:hover {
     text-decoration: none !important;
 }
 
@@ -21,13 +21,10 @@
     width: 60%;
 }
 
-/* Button Home  */
-
 .site-description {
     padding: 25px 20px;
     background: #e7e7e7;
 }
-/* Search */
 
 .search-box-wrapper {
     margin: 0 20px;
@@ -41,8 +38,8 @@
     background: #f8f8f8 !important;
 }
 
-.search-form .search-field,
-.search-form .search-submit {
+input.form-control.mr-sm-2,
+button.btn.btn-outline-secondary.my-2.my-sm-0 {
     border-radius: 10px;
     height: 50px;
     font-size: 13px;
@@ -62,7 +59,6 @@
     border: none;
     display: block !important;
 }
-
 
 .fa-user-circle {
     font-size: 38px;

@@ -1,0 +1,45 @@
+.previous-post {
+    color: #000;
+}
+
+
+.pagination-single-inner {
+    display: flex;
+    flex-direction: column !important;
+}
+.title {
+    font-size: 18px;
+    font-weight: 300;
+    margin-left: 10%;
+}
+
+.pagination-single-inner {
+    flex-direction: column;
+}
+
+.arrow {
+    font-size: 0.7em;
+    font-weight: 500;
+    width: 100%;
+    min-width: 55px;
+    display: table-cell;
+    vertical-align: middle;
+    margin: 5px 2rem 0 0
+}
+
+.arrow .arrow-headlinesdm {
+    float: left;
+    font-family: 'Prata', serif;
+    margin-top: -7px;
+}
+
+.arrow-headlinesday {
+    border-bottom: 1px solid #000;
+}
+
+.arrow .arrow-headlinesyear {
+    line-height: 3.5em;
+    float: left;
+    margin-left: 3px;
+    margin-top: -12px;
+}
