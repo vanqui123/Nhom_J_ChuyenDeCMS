@@ -36,7 +36,7 @@
 		</div>
 		<div class="border-left pl-3 border-dark">
 			<header class="<?php echo esc_attr($entry_header_classes); ?>">
-				<div class="entry-header-inner section-inner medium">
+				<div class="entry-header-inner section-inner medium" style="margin-left:0px">
 					<?php
 					/**
 					 * Allow child themes and plugins to filter the display of the categories in the entry header.

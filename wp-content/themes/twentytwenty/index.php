@@ -127,10 +127,10 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 				$i = 0;
 				?>
 
-					<div class="d-flex">
+					<div class="d-flex" style="margin-top:150px;margin-bottom:50px">
 						<div class="archives_group">
 							<h2>Archive</h2>
-							<div class="crossedbg"></div>
+							<div class="crossedbg1"></div>
 							<ul>
 								<?php $archive = wp_get_archives(); ?>
 							</ul>
@@ -151,16 +151,16 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 
 							<?php $recent_comments = get_comments(array(
 								'number'      => 5, // number of comments to retrieve.
-								'status'      => 'approve', // we only want approved comments.
+								 // we only want approved comments.
 								'post_status' => 'publish' // limit to published comments.
 							));
 
 
 							if ($recent_comments) {
 							?>
-								<div class="archives_group">
+							
 									<h2>Comment</h2>
-									<div class="crossedbg"></div>
+									<div class="crossedbg1"></div>
 									<ul>
 										<?php
 										foreach ((array) $recent_comments as $comment) {
@@ -178,7 +178,7 @@ $has_sidebar_3 = is_active_sidebar('sidebar-3');
 								<?php
 							}
 								?>
-								</div>
+						
 
 							<?php
 						} elseif (is_search()) {
